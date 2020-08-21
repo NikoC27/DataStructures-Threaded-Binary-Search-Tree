@@ -65,7 +65,6 @@ private:
 			return;        // has ended so return
 		else
 		{
-		
 			/* Insert key and value into the node */
 			insert(cur->Key, cur->Value);
 			_copy(cur->Left); // Go Left
@@ -78,7 +77,6 @@ private:
 			
 		}
 	}
-	
 	
 	/* Traverse through the tree using 
 	 * inorder and print the nodes */
@@ -222,30 +220,30 @@ public:
 	/* Loop through the tree */
     while (cur != nullptr)
 	{
-      if (key == cur->Key) 
-	  {
-		value = cur->Value; // Update value
-		return true; // key and value pair found
-	  }
+     	if (key == cur->Key) 
+	 	{
+			value = cur->Value; // Update value
+			return true; // key and value pair found
+	 	}
 		
-	  /* Check if key is less than current key */
-      if (key < cur->Key)  
-      {
-        cur = cur->Left; // Move left
-      }
-	  /* Check if key is greater than current key */
-      else
-      {
-		if(cur->isThreaded)
-		{
-			cur = nullptr;
-		}
-		else
-		{
-			cur = cur->Right; // Move Right
-		}
+	 	/* Check if key is less than current key */
+     	if (key < cur->Key)  
+      	{
+       		cur = cur->Left; // Move left
+      	}
+	 	/* Check if key is greater than current key */
+      	else
+      	{
+			if(cur->isThreaded)
+			{
+				cur = nullptr;
+			}
+			else
+			{
+				cur = cur->Right; // Move Right
+			}
 		 
-      }
+      	}
 	} 
   
     // key and value pair not found
@@ -268,36 +266,36 @@ public:
     /* Search to see if tree already contains key */
     while (cur != nullptr)
     {
-      if (key == cur->Key)  // Key already in tree
-        return;
+    	if (key == cur->Key)  // Key already in tree
+        	return;
 
-      if (key < cur->Key)  // Search left
-      {
-        prev = cur;
-        cur = cur->Left;
-      }
-      else // Search right
-      {
-		  if(cur->isThreaded)
-		  {
-			  prev = cur;
-			  cur = nullptr;
-		  }
-		  else // Not Threaded
-		  {
-			  cur = cur->Right; // Move right
-		  }
-       }
-    }//while
+      	if (key < cur->Key)  // Search left
+      	{
+        	prev = cur;
+        	cur = cur->Left;
+      	}
+      	else // Search right
+      	{
+			if(cur->isThreaded)
+		  	{
+			  	prev = cur;
+			  	cur = nullptr;
+		  	}
+		  	else // Not Threaded
+		  	{
+				cur = cur->Right; // Move right
+		  	}
+       	}
+  	}//while
 
 	/* Key is not in tree, so a new 
 	 * node is allocated to insert */
-      NODE* newNode = new NODE();
-	  newNode->Key = key;
-	  newNode->Value = value;
-      newNode->Left = nullptr;
-      newNode->Right = nullptr;
-	  newNode->isThreaded = true;
+	NODE* newNode = new NODE();
+	newNode->Key = key;
+	newNode->Value = value;
+    newNode->Left = nullptr;
+    newNode->Right = nullptr;
+	newNode->isThreaded = true;
 	  
     //
     // NOTE: cur is null, and prev denotes node where
@@ -306,22 +304,23 @@ public:
     // to be updated.
     //
 
-      if(prev == nullptr)
-         Root = newNode;
-      else if (key < prev->Key)
-	  {
-		  prev->Left = newNode; // Insert new node to the left of the previous
-		  newNode->Right = prev; // Point new node's right pointer 
+	if(prev == nullptr)
+     	Root = newNode;
+   	else if (key < prev->Key)
+	{
+		prev->Left = newNode; // Insert new node to the left of the previous
+		newNode->Right = prev; // Point new node's right pointer 
 								 // to the node on the right
-	  }
-      else
-	  {   
-		  newNode->Right = prev->Right;
-		  prev->isThreaded = false; 
-		  prev->Right = newNode; // Insert new node to the right of the previous
-	  }
+	}
+   	else
+	{   
+	  newNode->Right = prev->Right;
+	  prev->isThreaded = false; 
+	  prev->Right = newNode; // Insert new node to the right of the previous
+	}
          
-      Size++; // Update Size
+	Size++; // Update Size
+	  
   }
  
   //
@@ -336,7 +335,7 @@ public:
   {
 	  ValueT value; // Declare local value to call search and update
 	  
-    if(search(key,value))
+	if(search(key,value))
 	{
 		return value; 
 	}
@@ -390,8 +389,9 @@ public:
 			
 		}
 	}
-	
-	 return KeyT{ }; // Key not found
+	  
+	return KeyT{ }; // Key not found
+	  
   }
  
   //
